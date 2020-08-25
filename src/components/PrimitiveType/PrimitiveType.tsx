@@ -11,15 +11,6 @@ interface PrimitiveTypeProps {
   value: Date | String | Number | any;
 }
 
-const dateOptions = {
-  weekday: 'short',
-  year: 'numeric',
-  month: 'short',
-  day: 'numeric',
-  hour: '2-digit',
-  minute: '2-digit',
-};
-
 class PrimitiveType extends React.Component<PrimitiveTypeProps> {
   constructor(props: PrimitiveTypeProps) {
     super(props);

@@ -1,47 +1,15 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import {
+  Container,
+  Heading,
+  Loading,
+  Select,
+  Error,
+} from './SelectFile.styles';
 
 type SelectFileProps = {
   onFileSelect: Function;
 };
-
-const Select = styled.label`
-  line-height: 1.499;
-  font-weight: 400;
-  white-space: nowrap;
-  text-align: center;
-  border: 1px solid transparent;
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
-  touch-action: manipulation;
-  height: 25px;
-  padding: 3px 15px 0;
-  width: 100px;
-  font-size: 14px;
-  border-radius: 4px;
-  display: block;
-  color: #fff;
-  background-color: #1890ff;
-  border-color: #1890ff;
-  cursor: pointer;
-  &:focus {
-    outline: 0;
-  }
-`;
-const Heading = styled.h3`
-  font-weight: normal;
-  margin-bottom: 10px;
-`;
-
-const Container = styled.div`
-  margin-left: 20px;
-`;
-const Loading = styled.span`
-  font-size: 14px;
-  line-height: 30px;
-`;
-const Error = styled(Loading)`
-  color: red;
-`;
 
 const SelectFile: React.FC<SelectFileProps> = ({ onFileSelect }) => {
   const [error, setError] = useState('');

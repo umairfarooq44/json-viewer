@@ -1,1 +1,1 @@
-export { default } from './Object';
+export { default } from './Object.container';

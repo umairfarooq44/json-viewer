@@ -1,13 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import styled from 'styled-components';
 import { toType } from '../../utils/utils';
 
 import { Object as JsonObject } from '../index';
 
 import PrimitiveType from '../PrimitiveType';
 import ObjectName from '../ObjectName';
-
+import { Brace, Ellipsis, Meta } from './Object.styles';
 //icons
 import { ArrowDown, ArrowRight } from '../Icons';
 
@@ -15,25 +13,6 @@ import { ArrowDown, ArrowRight } from '../Icons';
 const DEPTH_INCREMENT = 1;
 //single indent is 5px
 const SINGLE_INDENT = 5;
-
-const Meta = styled.span`
-  color: rgb(165, 159, 133);
-  border-radius: 3px;
-  font-style: italic;
-  padding-left: 10px;
-`;
-
-const Brace = styled.span`
-  font-weight: bold;
-  color: rgb(249, 248, 245);
-`;
-
-const Ellipsis = styled.span`
-  color: rgb(253, 151, 31);
-  font-size: 18px;
-  line-height: 10px;
-  cursor: pointer;
-`;
 
 type State = {
   expanded: Boolean;
@@ -222,8 +201,4 @@ class ObjectType extends React.Component<Props, State> {
   };
 }
 
-const mapStateToProps = ({ jsonpath }: any) => ({
-  jsonpath,
-});
-
-export default connect(mapStateToProps)(ObjectType);
+export default ObjectType;
