@@ -1,0 +1,4 @@
+.container .object-name,
+.container .object-value {
+  color: red !important;
+}
