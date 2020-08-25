@@ -2,13 +2,13 @@ import React from 'react';
 import ObjectName from '../ObjectName';
 
 interface PrimitiveTypeProps {
-  type: String;
-  name: String;
+  type: string;
+  name: string;
   styles: any;
-  parentType: String;
-  namespace: String;
-  jsonpath: object[];
-  value: Date | String | Number | any;
+  parentType: string;
+  namespace: string;
+  jsonpath: string[];
+  value: string | Number | null | undefined;
 }
 
 class PrimitiveType extends React.Component<PrimitiveTypeProps> {
@@ -19,7 +19,7 @@ class PrimitiveType extends React.Component<PrimitiveTypeProps> {
     this.color = 'white';
   }
   selectedNameSpace: Boolean;
-  color: any;
+  color: string;
   shouldComponentUpdate(nextProps: PrimitiveTypeProps) {
     const { namespace } = this.props;
     const isNamespaceIncluded = nextProps.jsonpath.includes(namespace);
@@ -53,7 +53,7 @@ class PrimitiveType extends React.Component<PrimitiveTypeProps> {
     }
   };
   render() {
-    const { styles, parentType, name } = this.props;
+    const { styles, parentType, name, namespace } = this.props;
     const borderLeft = '1px solid rgb(73, 72, 62)';
     const value = this.formatValue();
     return (
@@ -61,7 +61,7 @@ class PrimitiveType extends React.Component<PrimitiveTypeProps> {
         className={this.selectedNameSpace && 'container'}
         style={{ ...styles, borderLeft }}
       >
-        <ObjectName name={name} parentType={parentType} />
+        <ObjectName name={name} parentType={parentType} namespace={namespace} />
         <span className='object-value' style={{ color: this.color }}>
           {value}
         </span>

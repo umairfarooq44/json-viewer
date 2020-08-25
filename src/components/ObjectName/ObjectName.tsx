@@ -1,7 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 type Props = {
-  [name: string]: any;
+  namespace: string;
+  name: string;
+  type?: string;
+  parentType?: string;
+  root?: Boolean;
 };
 
 const NameContainer = styled.span`

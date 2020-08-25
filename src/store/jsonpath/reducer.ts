@@ -1,5 +1,5 @@
 import { GET_JSON_PATH, actionType } from './types';
-const initialState: String[] = [];
+const initialState: string[] = [];
 
 export default function (state = initialState, action: actionType) {
   switch (action.type) {

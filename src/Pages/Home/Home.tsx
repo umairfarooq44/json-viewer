@@ -18,7 +18,14 @@ const Home = () => {
         <>
           <Search json={jsonData} />
           <JsonContainer>
-            <Object root src={jsonData} name='' depth={0} indentWidth={4} />
+            <Object
+              root
+              src={jsonData}
+              name=''
+              depth={0}
+              indentWidth={4}
+              namespace=''
+            />
           </JsonContainer>
         </>
       )}

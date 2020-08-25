@@ -1,6 +1,11 @@
 import { connect } from 'react-redux';
 import PrimitiveType from './PrimitiveType';
-const mapStateToProps = ({ jsonpath }: any) => ({
+
+type ReduxState = {
+  jsonpath: string[];
+};
+
+const mapStateToProps = ({ jsonpath }: ReduxState) => ({
   jsonpath,
 });
 

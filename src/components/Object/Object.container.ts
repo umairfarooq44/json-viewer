@@ -1,7 +1,11 @@
 import { connect } from 'react-redux';
 import ObjectType from './Object';
 
-const mapStateToProps = ({ jsonpath }: any) => ({
+type ReduxState = {
+  jsonpath: string[];
+};
+
+const mapStateToProps = ({ jsonpath }: ReduxState) => ({
   jsonpath,
 });
 

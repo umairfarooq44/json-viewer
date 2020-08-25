@@ -5,7 +5,7 @@ import { GET_JSON_PATH } from './types';
 const getPaths = (path: string, json: any) => {
   return new Promise((resolve, reject) => {
     try {
-      let filteredPaths: any = JSONPath({
+      let filteredPaths: string[] = JSONPath({
         path,
         json,
         resultType: 'pointer',
@@ -13,16 +13,16 @@ const getPaths = (path: string, json: any) => {
       let shortest = Number.MAX_VALUE;
       // Removing child paths to prevent extra renders
       filteredPaths = filteredPaths
-        .filter((val: String) => !!val)
-        .map((val: any) => {
+        .filter((val: string) => !!val)
+        .map((val: string) => {
           const s = val.split('/');
           if (s.length < shortest) {
             shortest = s.length;
           }
           return s;
         })
-        .filter((val: any) => val.length === shortest)
-        .map((val: any) => val.join('/'));
+        .filter((val: string[]) => val.length === shortest)
+        .map((val: string[]) => val.join('/'));
       resolve(filteredPaths);
     } catch (err) {
       reject(err);

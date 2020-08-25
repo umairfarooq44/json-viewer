@@ -19,7 +19,15 @@ type State = {
 };
 
 type Props = {
-  [name: string]: any;
+  depth: number;
+  src: any;
+  namespace: string;
+  name: string;
+  type?: string;
+  parentType?: string;
+  root?: Boolean;
+  jsonpath: string[];
+  indentWidth: number;
 };
 
 class ObjectType extends React.Component<Props, State> {
@@ -63,10 +71,6 @@ class ObjectType extends React.Component<Props, State> {
     });
   };
 
-  getObjectContent = (depth: any, src: Object, props: Props) => {
-    return this.renderObjectContents(src, props);
-  };
-
   getEllipsis = () => {
     const { size } = this;
 
@@ -85,7 +89,7 @@ class ObjectType extends React.Component<Props, State> {
     );
   };
 
-  getBraceStart(objectType: String, expanded: Boolean) {
+  getBraceStart(objectType: string, expanded: Boolean) {
     const { root } = this.props;
     const IconComponent = expanded ? ArrowDown : ArrowRight;
     return (
@@ -127,7 +131,7 @@ class ObjectType extends React.Component<Props, State> {
       <div className={this.selectedNameSpace && 'container'} style={styles}>
         {this.getBraceStart(this.objectType, expanded)}
         {expanded
-          ? this.getObjectContent(depth, src, {
+          ? this.renderObjectContents(src, {
               styles,
               ...rest,
             })
@@ -155,15 +159,12 @@ class ObjectType extends React.Component<Props, State> {
   };
 
   renderObjectContents = (variables: any, props: any) => {
-    const { depth, namespace = '' } = this.props;
+    const { depth, namespace } = this.props;
     const styles: any = {};
     const { objectType } = this;
     let elements: React.ReactNode[] = [],
       variable;
     let keys = Object.keys(variables || {});
-    if (this.props.sortKeys) {
-      keys = keys.sort();
-    }
     keys.forEach((name) => {
       variable = this.getVariable(name, variables[name]);
 
