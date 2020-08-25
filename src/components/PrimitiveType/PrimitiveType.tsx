@@ -58,7 +58,7 @@ class PrimitiveType extends React.Component<PrimitiveTypeProps> {
     const value = this.formatValue();
     return (
       <div
-        className={this.selectedNameSpace && 'container'}
+        className={this.selectedNameSpace ? 'container' : ''}
         style={{ ...styles, borderLeft }}
       >
         <ObjectName name={name} parentType={parentType} namespace={namespace} />

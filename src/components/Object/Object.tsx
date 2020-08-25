@@ -128,7 +128,7 @@ class ObjectType extends React.Component<Props, State> {
     }
 
     return (
-      <div className={this.selectedNameSpace && 'container'} style={styles}>
+      <div className={this.selectedNameSpace ? 'container' : ''} style={styles}>
         {this.getBraceStart(this.objectType, expanded)}
         {expanded
           ? this.renderObjectContents(src, {
