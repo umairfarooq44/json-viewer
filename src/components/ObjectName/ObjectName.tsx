@@ -17,7 +17,7 @@ export default function getObjectName(props: Props) {
 
   const display_name = props.name ? props.name : '';
 
-  if (root && (name === false || name === null)) {
+  if (root && !name) {
     return <span />;
   } else if (parentType === 'array') {
     return (

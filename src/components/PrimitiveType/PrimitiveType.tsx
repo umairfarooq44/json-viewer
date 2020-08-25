@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import ObjectName from '../ObjectName';
 
 interface PrimitiveTypeProps {
@@ -32,7 +31,6 @@ class PrimitiveType extends React.Component<PrimitiveTypeProps> {
   color: any;
   shouldComponentUpdate(nextProps: PrimitiveTypeProps) {
     const { namespace } = this.props;
-    console.log(nextProps.jsonpath, namespace);
     const isNamespaceIncluded = nextProps.jsonpath.includes(namespace);
     const isdiff = this.selectedNameSpace !== isNamespaceIncluded;
     this.selectedNameSpace = isNamespaceIncluded;
@@ -59,13 +57,6 @@ class PrimitiveType extends React.Component<PrimitiveTypeProps> {
         return 'NAN';
       case 'undefined':
         return 'undefined';
-      case 'date':
-        this.color = 'rgb(59, 72, 227)';
-        return value.toLocaleTimeString('en-us', dateOptions);
-      case 'regexp':
-        return value.toString();
-      case 'function':
-        return value.toString();
       default:
         return JSON.stringify(value);
     }
@@ -87,8 +78,5 @@ class PrimitiveType extends React.Component<PrimitiveTypeProps> {
     );
   }
 }
-const mapStateToProps = ({ jsonpath }: any) => ({
-  jsonpath,
-});
 
-export default connect(mapStateToProps)(PrimitiveType);
+export default PrimitiveType;

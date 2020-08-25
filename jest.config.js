@@ -22,10 +22,10 @@ module.exports = {
   // collectCoverage: false,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  collectCoverageFrom: ["src/modules/**/*.{js,jsx,mjs}"],
+  collectCoverageFrom: ['src/modules/**/*.{js,jsx,mjs}'],
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: "coverage",
+  coverageDirectory: 'coverage',
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -64,7 +64,7 @@ module.exports = {
   // ],
 
   // An array of file extensions your modules use
-  moduleFileExtensions: ["js", "json", "jsx"],
+  moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx'],
 
   // A map from regular expressions to module names that allow to stub out resources with a single module
   // moduleNameMapper: {},
@@ -103,15 +103,13 @@ module.exports = {
   // rootDir: null,
 
   // A list of paths to directories that Jest should use to search for files in
-  // roots: [
-  //   "<rootDir>"
-  // ],
+  roots: ['<rootDir>/src'],
 
   // Allows you to use a custom runner instead of Jest's default test runner
   // runner: "jest-runner",
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
-  setupFiles: ["<rootDir>/enzyme.config.js"],
+  // setupFiles: ["<rootDir>/enzyme.config.js"],
 
   // The path to a module that runs some code to configure or set up the testing framework before each test
   // setupTestFrameworkScriptFile: '',
@@ -120,7 +118,7 @@ module.exports = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: "jsdom",
+  testEnvironment: 'jsdom',
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -129,10 +127,10 @@ module.exports = {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-  testMatch: ["**/__tests__/**/*.tsx?(x)", "**/?(*.)+(spec|test).tsx?(x)"],
+  testMatch: ['**/__tests__/**/*.tsx?(x)', '**/?(*.)+(spec|test).tsx?(x)'],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-  testPathIgnorePatterns: ["\\\\node_modules\\\\"],
+  testPathIgnorePatterns: ['\\\\node_modules\\\\'],
 
   // The regexp pattern Jest uses to detect test files
   // testRegex: "",
@@ -144,16 +142,18 @@ module.exports = {
   // testRunner: "jasmine2",
 
   // This option sets the URL for the jsdom environment. It is reflected in properties such as location.href
-  testURL: "http://localhost",
+  testURL: 'http://localhost',
 
   // Setting this value to "fake" allows the use of fake timers for functions such as "setTimeout"
   // timers: "real",
 
   // A map from regular expressions to paths to transformers
-  // transform: {},
+  transform: {
+    '^.+\\.tsx?$': 'ts-jest',
+  },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
-  transformIgnorePatterns: ["<rootDir>/node_modules/"],
+  transformIgnorePatterns: ['<rootDir>/node_modules/'],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,

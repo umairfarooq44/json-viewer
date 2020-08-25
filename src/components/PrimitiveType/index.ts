@@ -1,1 +1,1 @@
-export { default } from './PrimitiveType';
+export { default } from './PrimitiveType.container';
