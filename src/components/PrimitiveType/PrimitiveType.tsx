@@ -22,6 +22,7 @@ class PrimitiveType extends React.Component<PrimitiveTypeProps> {
   color: string;
   shouldComponentUpdate(nextProps: PrimitiveTypeProps) {
     const { namespace } = this.props;
+    // Only updating if included in json path
     const isNamespaceIncluded = nextProps.jsonpath.includes(namespace);
     const isdiff = this.selectedNameSpace !== isNamespaceIncluded;
     this.selectedNameSpace = isNamespaceIncluded;
