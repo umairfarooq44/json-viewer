@@ -8,7 +8,7 @@ interface PrimitiveTypeProps {
   parentType: string;
   namespace: string;
   jsonpath: string[];
-  value: string | Number | null | undefined;
+  value: string | Number | null | undefined | boolean;
 }
 
 class PrimitiveType extends React.Component<PrimitiveTypeProps> {
