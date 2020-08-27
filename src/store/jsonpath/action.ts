@@ -10,19 +10,27 @@ const getPaths = (path: string, json: any) => {
         json,
         resultType: 'pointer',
       });
-      let shortest = Number.MAX_VALUE;
-      // Removing child paths to prevent extra renders
+      console.log(filteredPaths);
       filteredPaths = filteredPaths
         .filter((val: string) => !!val)
-        .map((val: string) => {
-          const s = val.split('/');
-          if (s.length < shortest) {
-            shortest = s.length;
+        .reduce((shortests: any, string) => {
+          const keys = string.slice(1).split('/');
+          const subset = shortests.filter((shortest: any) =>
+            keys.some((key, i) => key !== shortest[i])
+          );
+
+          if (subset.length !== shortests.length) return [...subset, keys];
+          if (
+            !shortests.some((shortest: any) => {
+              return shortest.every((val: any, i: any) => val === keys[i]);
+            })
+          ) {
+            shortests.push(keys);
           }
-          return s;
-        })
-        .filter((val: string[]) => val.length === shortest)
-        .map((val: string[]) => val.join('/'));
+          return shortests;
+        }, [])
+        .map((keys: any) => `/${keys.join('/')}`);
+      console.log(filteredPaths);
       resolve(filteredPaths);
     } catch (err) {
       reject(err);
