@@ -10,7 +10,6 @@ const getPaths = (path: string, json: any) => {
         json,
         resultType: 'pointer',
       });
-      console.log(filteredPaths);
       filteredPaths = filteredPaths
         .filter((val: string) => !!val)
         .reduce((shortests: any, string) => {
@@ -30,7 +29,6 @@ const getPaths = (path: string, json: any) => {
           return shortests;
         }, [])
         .map((keys: any) => `/${keys.join('/')}`);
-      console.log(filteredPaths);
       resolve(filteredPaths);
     } catch (err) {
       reject(err);
